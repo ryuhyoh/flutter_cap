@@ -3,7 +3,7 @@ import 'package:flutter_animate/flutter_animate.dart';
 
 // 검색 화면 위젯
 class SearchScreen extends StatelessWidget {
-  const SearchScreen({super.key});
+  SearchScreen({super.key});
 
   // Hero 태그 정의 (Home 화면과 동일하게)
   final String _heroTag = 'searchBoxHero';
@@ -12,6 +12,16 @@ class SearchScreen extends StatelessWidget {
   final double _cardHeight = 430.0;
   final double _cardWidth = 390.0;
   final double _cardBorderRadius = 35.0;
+
+  final List<String> mapLocations = List.generate(
+    8,
+    (index) => 'Location $index',
+  );
+  final double mapImageHeight = 110.0;
+  final double mapCaptionSpacing = 4.0;
+  final double mapCaptionHeight = 16.0;
+  final double mapListTotalHeight = 140.0;
+  final double mapItemWidth = 120.0;
 
   @override
   Widget build(BuildContext context) {
@@ -122,7 +132,62 @@ class SearchScreen extends StatelessWidget {
                                   ),
                                 ),
                               ),
-                              const Spacer(),
+                              const SizedBox(height: 20),
+                              SizedBox(
+                                height: mapListTotalHeight,
+                                child: ListView.builder(
+                                  scrollDirection: Axis.horizontal,
+                                  itemCount: mapLocations.length,
+                                  itemBuilder: (context, index) {
+                                    return Padding(
+                                      padding: EdgeInsets.only(right: 10.0),
+                                      child: SizedBox(
+                                        width: mapItemWidth,
+                                        child: Column(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.start,
+                                          children: [
+                                            ClipRRect(
+                                              borderRadius:
+                                                  BorderRadius.circular(12.0),
+                                              child: Container(
+                                                width: mapItemWidth,
+                                                height: mapImageHeight,
+                                                color: Colors.grey.shade300,
+                                                // TODO
+                                              ),
+                                            ),
+                                            SizedBox(height: mapCaptionSpacing),
+                                            Text(
+                                              mapLocations[index],
+                                              style: TextStyle(
+                                                fontSize: 12,
+                                                color: Colors.black,
+                                              ),
+                                              maxLines: 1,
+                                              overflow: TextOverflow.ellipsis,
+                                            ),
+                                          ],
+                                        ),
+                                      ),
+                                    );
+                                  },
+                                ),
+                              ),
+                              Divider(
+                                color: Colors.grey.shade400,
+                                thickness: 0.5,
+                                indent: 3,
+                                endIndent: 3,
+                                height: 30,
+                              ),
+                              Text(
+                                '인기 여행지',
+                                style: TextStyle(
+                                  fontSize: 16,
+                                  fontWeight: FontWeight.w700,
+                                ),
+                              ),
                             ],
                           ),
                         )

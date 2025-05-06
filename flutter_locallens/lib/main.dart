@@ -182,8 +182,7 @@ class _HomeState extends State<Home> {
             reverseTransitionDuration: 400.ms,
             opaque: false, // 전환 중 이전 화면이 비치도록 배경을 투명하게 처리
             pageBuilder: // 실제로 표시될 화면 위젯을 생성하는 함수
-                (context, animation, secondaryAnimation) =>
-                    const SearchScreen(),
+                (context, animation, secondaryAnimation) => SearchScreen(),
             transitionsBuilder: (
               // 화면 전환 애니메이션을 정의하는 함수
               context,
