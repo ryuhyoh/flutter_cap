@@ -22,7 +22,11 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'WhereWeGo',
       debugShowCheckedModeBanner: false,
-      theme: ThemeData(colorSchemeSeed: Colors.white, useMaterial3: true),
+      theme: ThemeData(
+        colorSchemeSeed: Colors.white,
+        useMaterial3: true,
+        fontFamily: 'Gmarket',
+      ),
       home: const Home(),
     );
   }
@@ -144,7 +148,7 @@ class _HomeState extends State<Home> {
           PageRouteBuilder(
             transitionDuration: 450.ms, // 애니메이션 시간 조정
             reverseTransitionDuration: 400.ms,
-            opaque: false,
+            opaque: false, // 배경을 투명하게 하여 Hero 애니메이션이 더 잘 보이도록 설정
             pageBuilder:
                 (context, animation, secondaryAnimation) =>
                     const SearchScreen(),
@@ -154,6 +158,8 @@ class _HomeState extends State<Home> {
               secondaryAnimation,
               child,
             ) {
+              // Hero 애니메이션과 함께 전체 페이지에 대한 Fade Transition을 적용할 수 있습니다.
+              // 또는 Hero 애니메이션만 사용하고 싶다면 이 부분을 단순 child 반환으로 변경할 수 있습니다.
               return FadeTransition(
                 opacity: CurvedAnimation(
                   parent: animation,
@@ -177,6 +183,7 @@ class _HomeState extends State<Home> {
           BuildContext fromHeroContext,
           BuildContext toHeroContext,
         ) {
+          // SearchScreen의 카드 모양과 일치하도록 flightShuttle 정의
           return Material(
             type: MaterialType.transparency,
             child: Container(decoration: destinationCardDecoration),
@@ -205,13 +212,12 @@ class _HomeState extends State<Home> {
                     _texts[_currentIndex],
                     textAlign: TextAlign.center,
                     style: const TextStyle(
-                      // const 추가
                       fontSize: 35,
                       fontWeight: FontWeight.bold,
                     ),
                   ),
                 ),
-                const SizedBox(height: 50), // const 추가
+                const SizedBox(height: 50),
                 _buildSearchButton(),
               ],
             ),
