@@ -108,25 +108,16 @@ class _SearchScreenState extends State<SearchScreen>
 
   @override
   Widget build(BuildContext context) {
-    final Color backgroundColor = Theme.of(context).colorScheme.surface;
-    final Color primaryColor = Theme.of(context).primaryColor;
-    final Color surfaceContainerHighest =
-        Theme.of(context).colorScheme.surfaceContainerHighest;
-    final Color onSurfaceColor = Theme.of(context).colorScheme.onSurface;
-    final Color outlineVariantColor =
-        Theme.of(context).colorScheme.outlineVariant;
-    final Color outlineColor =
-        Theme.of(context).colorScheme.outline; // TextField focusedBorder 등에 사용
-    final Color onSurfaceVariantColor =
-        Theme.of(context).colorScheme.onSurfaceVariant;
-
     return Scaffold(
-      backgroundColor: backgroundColor,
+      backgroundColor: Theme.of(context).colorScheme.surface,
       appBar: AppBar(
         backgroundColor: Colors.transparent,
         elevation: 0,
         leading: IconButton(
-          icon: Icon(Icons.close, color: onSurfaceColor),
+          icon: Icon(
+            Icons.close,
+            color: Theme.of(context).colorScheme.onSurface,
+          ),
           onPressed: () => Navigator.pop(context),
         ),
         forceMaterialTransparency: true,
@@ -146,7 +137,7 @@ class _SearchScreenState extends State<SearchScreen>
                   width: _widthAnimation.value,
                   height: _heightAnimation.value,
                   decoration: BoxDecoration(
-                    color: backgroundColor,
+                    color: Theme.of(context).colorScheme.surface,
                     borderRadius: BorderRadius.circular(_cardBorderRadius),
                     boxShadow: [
                       BoxShadow(
@@ -188,18 +179,16 @@ class _SearchScreenState extends State<SearchScreen>
                               hintText: '여행지 검색',
                               prefixIcon: Icon(
                                 Icons.search,
-                                color: Theme.of(
-                                  context,
-                                ).iconTheme.color?.withOpacity(0.6),
+                                color: Theme.of(context).colorScheme.onSurface,
                               ),
                               border: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(10),
+                                borderRadius: BorderRadius.circular(15),
                                 borderSide: BorderSide(
                                   color: Theme.of(context).colorScheme.outline,
                                 ),
                               ),
                               enabledBorder: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(10),
+                                borderRadius: BorderRadius.circular(15),
                                 borderSide: BorderSide(
                                   color:
                                       Theme.of(
@@ -208,14 +197,17 @@ class _SearchScreenState extends State<SearchScreen>
                                 ),
                               ),
                               focusedBorder: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(10),
+                                borderRadius: BorderRadius.circular(15),
                                 borderSide: BorderSide(
                                   color: Theme.of(context).colorScheme.outline,
                                   width: 1.5,
                                 ), // 포커스 시 primaryColor 사용
                               ),
                               filled: true,
-                              fillColor: surfaceContainerHighest, // 내부 채우기 색
+                              fillColor:
+                                  Theme.of(
+                                    context,
+                                  ).colorScheme.surface, // 내부 채우기 색
                               contentPadding: const EdgeInsets.symmetric(
                                 vertical: 15.0,
                               ),
@@ -268,7 +260,12 @@ class _SearchScreenState extends State<SearchScreen>
                                     horizontal: 8,
                                     vertical: 4,
                                   ), // const 추가
-                                  side: BorderSide(color: outlineVariantColor),
+                                  side: BorderSide(
+                                    color:
+                                        Theme.of(
+                                          context,
+                                        ).colorScheme.outlineVariant,
+                                  ),
                                   shape: RoundedRectangleBorder(
                                     borderRadius: BorderRadius.circular(15.0),
                                   ),
@@ -277,7 +274,8 @@ class _SearchScreenState extends State<SearchScreen>
                                   regionNames[index],
                                   style: TextStyle(
                                     fontSize: 12,
-                                    color: onSurfaceVariantColor,
+                                    color:
+                                        Theme.of(context).colorScheme.outline,
                                   ),
                                   overflow: TextOverflow.ellipsis,
                                 ),
@@ -306,7 +304,7 @@ class _SearchScreenState extends State<SearchScreen>
       child: SizedBox(
         width: mapItemWidth,
         child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             ClipRRect(
               borderRadius: BorderRadius.circular(12.0),
