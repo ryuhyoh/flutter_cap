@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'dart:async';
-import 'search_screen.dart'; // SearchScreen import
+import 'screens/main_screen.dart'; // SearchScreen import
 import 'package:flutter_animate/flutter_animate.dart'; // .ms 확장 기능 등 사용
 
 void main() => runApp(const MyApp());
@@ -150,16 +150,13 @@ class _HomeState extends State<Home> {
             reverseTransitionDuration: 400.ms,
             opaque: false, // 배경을 투명하게 하여 Hero 애니메이션이 더 잘 보이도록 설정
             pageBuilder:
-                (context, animation, secondaryAnimation) =>
-                    const SearchScreen(),
+                (context, animation, secondaryAnimation) => const MainScreen(),
             transitionsBuilder: (
               context,
               animation,
               secondaryAnimation,
               child,
             ) {
-              // Hero 애니메이션과 함께 전체 페이지에 대한 Fade Transition을 적용할 수 있습니다.
-              // 또는 Hero 애니메이션만 사용하고 싶다면 이 부분을 단순 child 반환으로 변경할 수 있습니다.
               return FadeTransition(
                 opacity: CurvedAnimation(
                   parent: animation,
