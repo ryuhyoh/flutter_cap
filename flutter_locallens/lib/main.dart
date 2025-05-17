@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'dart:async';
-import 'screens/main_screen.dart'; // SearchScreen import
+// SearchScreen import
 import 'package:flutter_animate/flutter_animate.dart'; // .ms 확장 기능 등 사용
+import 'screens/test.dart';
 
 void main() => runApp(const MyApp());
 
@@ -25,7 +26,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         colorSchemeSeed: Colors.white,
         useMaterial3: true,
-        fontFamily: 'Gmarket',
+        fontFamily: 'Gmacket',
       ),
       home: const Home(),
     );
@@ -131,12 +132,13 @@ class _HomeState extends State<Home> {
 
     final destinationCardDecoration = BoxDecoration(
       color: Theme.of(context).colorScheme.surface,
-      borderRadius: BorderRadius.circular(_cardBorderRadius),
+      borderRadius: BorderRadius.circular(25.0),
       boxShadow: [
         BoxShadow(
-          color: Colors.black.withOpacity(0.2),
-          blurRadius: 10,
-          offset: const Offset(0, 5),
+          color: Colors.black.withOpacity(0.1),
+          spreadRadius: 2,
+          blurRadius: 5,
+          offset: const Offset(0, 3),
         ),
       ],
     );
@@ -150,7 +152,8 @@ class _HomeState extends State<Home> {
             reverseTransitionDuration: 400.ms,
             opaque: false, // 배경을 투명하게 하여 Hero 애니메이션이 더 잘 보이도록 설정
             pageBuilder:
-                (context, animation, secondaryAnimation) => const MainScreen(),
+                (context, animation, secondaryAnimation) =>
+                    const InteractiveAnimatedCardsScreen(),
             transitionsBuilder: (
               context,
               animation,
@@ -169,7 +172,7 @@ class _HomeState extends State<Home> {
         );
       },
       child: Hero(
-        tag: _heroTag,
+        tag: 'searchBoxHero',
         createRectTween: (begin, end) {
           return MaterialRectArcTween(begin: begin, end: end);
         },
