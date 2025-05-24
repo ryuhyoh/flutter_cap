@@ -4,6 +4,7 @@ import 'dart:async';
 // SearchScreen import
 import 'package:flutter_animate/flutter_animate.dart'; // .ms 확장 기능 등 사용
 import 'screens/test.dart';
+import 'package:flutter_locallens/screens/main_screen.dart';
 
 void main() => runApp(const MyApp());
 
