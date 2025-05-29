@@ -14,8 +14,8 @@ class ResultsPage extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text('"$queryText" 검색 결과'),
-        backgroundColor: Theme.of(context).colorScheme.surfaceContainerHighest,
+        title: Text('검색 결과'),
+        backgroundColor: Colors.transparent,
         leading: IconButton(
           icon: const Icon(Icons.arrow_back),
           onPressed: () {
