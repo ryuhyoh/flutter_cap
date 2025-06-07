@@ -70,6 +70,7 @@ class _LoadingPageState extends State<LoadingPage> {
                 (context) =>
                     ResultsPage(
                       data: responseData,
+                      destination: widget.destination,
                       selectedDateRange: widget.selectedDateRange,
                       partySize: widget.partySize,
                     ).animate().fadeIn(),

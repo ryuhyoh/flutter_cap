@@ -4,8 +4,15 @@ import 'dart:async';
 // SearchScreen import
 import 'package:flutter_animate/flutter_animate.dart'; // .ms 확장 기능 등 사용
 import 'screens/search_page.dart';
+import 'package:flutter_locallens/selection_model.dart';
+import 'package:provider/provider.dart';
 
-void main() => runApp(const MyApp());
+void main() => runApp(
+  ChangeNotifierProvider(
+    create: (context) => SelectionModel(),
+    child: const MyApp(),
+  ),
+);
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});

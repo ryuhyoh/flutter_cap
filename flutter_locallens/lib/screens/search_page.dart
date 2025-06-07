@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_locallens/loading_page.dart'; // LoadingPage import 확인
 import 'dart:async';
 import 'package:flutter/services.dart';
+import 'package:provider/provider.dart';
+import 'package:flutter_locallens/selection_model.dart';
 
 class InteractiveAnimatedCardsScreen extends StatefulWidget {
   const InteractiveAnimatedCardsScreen({super.key});
@@ -1024,6 +1026,14 @@ class _InteractiveAnimatedCardsScreenState
                                   }
                                   return;
                                 }
+
+                                context.read<SelectionModel>().clear();
+                                context
+                                    .read<SelectionModel>()
+                                    .updateTripDetails(
+                                      dateRange: _selectedDateRange!,
+                                      partySize: _partySize!,
+                                    );
 
                                 print(
                                   "선택된 여행지: $_selectedDestination, "

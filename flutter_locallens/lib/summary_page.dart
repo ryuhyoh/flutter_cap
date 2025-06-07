@@ -98,6 +98,10 @@ class _SummaryPageState extends State<SummaryPage> {
     final String summaryText =
         widget.summaryData['summary_text'] ?? '요약 정보가 없습니다.';
 
+    print('--- AI로부터 받은 원본 텍스트 ---');
+    print(summaryText);
+    print('---------------------------------');
+
     // Stack을 사용하여 로딩 오버레이 구현
     return Stack(
       children: [
