@@ -12,8 +12,16 @@ import 'package:flutter_animate/flutter_animate.dart';
 class LoadingPage extends StatefulWidget {
   final String destination;
   final String vibe;
+  final DateTimeRange? selectedDateRange;
+  final int? partySize;
 
-  const LoadingPage({super.key, required this.destination, required this.vibe});
+  const LoadingPage({
+    super.key,
+    required this.destination,
+    required this.vibe,
+    this.selectedDateRange,
+    this.partySize,
+  });
 
   @override
   State<LoadingPage> createState() => _LoadingPageState();
@@ -59,7 +67,12 @@ class _LoadingPageState extends State<LoadingPage> {
           context,
           MaterialPageRoute(
             builder:
-                (context) => ResultsPage(data: responseData).animate().fadeIn(),
+                (context) =>
+                    ResultsPage(
+                      data: responseData,
+                      selectedDateRange: widget.selectedDateRange,
+                      partySize: widget.partySize,
+                    ).animate().fadeIn(),
           ),
         );
       } else {
